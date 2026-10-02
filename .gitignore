@@ -1,0 +1,12 @@
+# server-side artifacts
+error_log
+cgi-bin/
+.well-known/
+
+# Font Awesome: only css/ and webfonts/ are used by the site
+fontawesome-free-6.1.1-web/js/
+fontawesome-free-6.1.1-web/less/
+fontawesome-free-6.1.1-web/scss/
+fontawesome-free-6.1.1-web/svgs/
+fontawesome-free-6.1.1-web/sprites/
+fontawesome-free-6.1.1-web/metadata/
