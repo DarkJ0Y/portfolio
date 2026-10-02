@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudipto Sarkar Joy | AI Researcher &amp; Engineer</title>
+    <meta name="description" content="Portfolio of Sudipto Sarkar Joy, EEE undergraduate at BUET working on deep learning, computer vision, multimodal AI, speech recognition and robotics.">
+    <meta name="theme-color" content="#07050f">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fontawesome-free-6.1.1-web/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Scroll-driven 3D flythrough background (three.js) -->
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="bg-vignette" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="main-width header-inner">
+            <a href="#home" class="logo" aria-label="Home"><i class="fa-solid fa-s"></i></a>
+            <nav aria-label="Primary">
+                <ul class="nav-list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#awards">Awards</a></li>
+                    <li class="btn"><a href="#contact">Contact Me</a></li>
+                </ul>
+            </nav>
+            <button class="hamb" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Fullscreen graphical menu (mobile + menu button) -->
+    <div class="menu-overlay" aria-hidden="true">
+        <div class="menu-grid">
+            <a href="#home" class="menu-tile"><i class="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="#about" class="menu-tile"><i class="fa-solid fa-user-astronaut"></i><span>About</span></a>
+            <a href="#skills" class="menu-tile"><i class="fa-solid fa-atom"></i><span>Skills</span></a>
+            <a href="#journey" class="menu-tile"><i class="fa-solid fa-route"></i><span>Journey</span></a>
+            <a href="#research" class="menu-tile"><i class="fa-solid fa-flask"></i><span>Research</span></a>
+            <a href="#projects" class="menu-tile"><i class="fa-solid fa-cube"></i><span>Projects</span></a>
+            <a href="#awards" class="menu-tile"><i class="fa-solid fa-trophy"></i><span>Awards</span></a>
+            <a href="#contact" class="menu-tile"><i class="fa-solid fa-paper-plane"></i><span>Contact</span></a>
+        </div>
+    </div>
+
+    <!-- Orbit navigation: graphical section rail -->
+    <nav class="orbit-nav" aria-label="Section navigation">
+        <div class="orbit-track"><div class="orbit-fill"></div></div>
+        <a href="#home" data-label="Home"></a>
+        <a href="#about" data-label="About"></a>
+        <a href="#skills" data-label="Skills"></a>
+        <a href="#journey" data-label="Journey"></a>
+        <a href="#research" data-label="Research"></a>
+        <a href="#projects" data-label="Projects"></a>
+        <a href="#awards" data-label="Awards"></a>
+        <a href="#contact" data-label="Contact"></a>
+    </nav>
+
+    <main>
+        <!-- HERO -->
+        <section id="home" class="hero">
+            <div class="main-width hero-grid">
+                <div class="hero-text reveal">
+                    <h3>Hello Everyone!</h3>
+                    <h1>I Am <span class="input gradient-text"></span></h1>
+                    <p class="hero-sub">EEE @ BUET · Deep Learning · Computer Vision · Multimodal AI · Speech · Robotics</p>
+                    <p class="hero-quote"><i class="fa-solid fa-quote-left"></i> Life is what how we define it, so define yourself to define your life</p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-primary">My Projects</a>
+                        <a href="assets/Sudipto_Sarkar_CV.pdf" class="btn-ghost" download><i class="fa-solid fa-download"></i> Download CV</a>
+                    </div>
+                    <div class="hero-social">
+                        <a href="https://github.com/DarkJ0Y" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/sudipto-sarkar-256b15227/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="https://www.facebook.com/sarkar.joy.142" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="mailto:sudiptosarkarjoy@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Isometric workspace, built from CSS 3D boxes in main.js -->
+                <div class="iso-wrap reveal" aria-hidden="true">
+                    <div class="iso-scene" id="iso-scene"></div>
+                </div>
+            </div>
+
+            <div class="main-width">
+                <div class="stats reveal">
+                    <div class="stat"><b data-count="3">0</b><span>Research papers</span></div>
+                    <div class="stat"><b data-count="8">0</b><span>Engineering projects</span></div>
+                    <div class="stat"><b data-count="9">0</b><span>Honors &amp; awards</span></div>
+                    <div class="stat"><b data-count="4">0</b><span>Leadership roles</span></div>
+                </div>
+            </div>
+
+            <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">01 · About</span>
+                    <h2>Engineering <span class="gradient-text">intelligent systems</span></h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="tilt photo-card reveal" data-tilt>
+                        <div class="photo-layer"><img src="img/sudipto_buet.jpg" alt="Sudipto Sarkar Joy at BUET" loading="lazy"></div>
+                        <div class="photo-badge layer-up"><i class="fa-solid fa-graduation-cap"></i> BUET · EEE</div>
+                        <div class="photo-badge b2 layer-up"><i class="fa-solid fa-flask"></i> AI Research</div>
+                        <div class="photo-ring"></div>
+                    </div>
+
+                    <div class="about-text reveal">
+                        <p class="lead">Electrical and Electronic Engineering student at <strong>Bangladesh University of Engineering and Technology (BUET)</strong> with research experience in Deep Learning, Computer Vision, Multimodal AI, Speech Recognition, and Foundation Models.</p>
+                        <p>Author of peer-reviewed publications and an arXiv preprint, with multiple top placements in IEEE AI competitions. Experienced in PyTorch, TensorFlow, model optimization, multimodal learning, and developing practical AI systems, from drones that find survivors to apps that teach.</p>
+
+                        <div class="info-grid">
+                            <div class="info"><i class="fa-solid fa-graduation-cap"></i><div><b>B.Sc. EEE, BUET</b><span>2022 – 2026 (Expected) · CGPA 3.21</span></div></div>
+                            <div class="info"><i class="fa-solid fa-location-dot"></i><div><b>Dhaka, Bangladesh</b><span>Dept. of EEE, BUET</span></div></div>
+                            <div class="info"><i class="fa-solid fa-language"></i><div><b>Languages</b><span>Bengali (Native) · English (Fluent) · Hindi</span></div></div>
+                            <div class="info"><i class="fa-solid fa-heart"></i><div><b>Interests</b><span>Robotics · Quantum Physics · Tech Innovation · Data Security · Education · Science Communication</span></div></div>
+                        </div>
+
+                        <h4 class="mini-head">Research Interests</h4>
+                        <div class="interest-chips" id="interest-chips"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">02 · Skills</span>
+                    <h2>A universe of <span class="gradient-text">tools</span></h2>
+                    <p class="section-desc">Drag the sphere to spin it. Pick a category to light up its skills.</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="sphere-wrap reveal">
+                        <div class="tag-sphere" id="tag-sphere" aria-label="Skill cloud"></div>
+                        <div class="sphere-core"></div>
+                    </div>
+                    <div class="skill-panel reveal">
+                        <div class="skill-cats" id="skill-cats"></div>
+                        <div class="skill-list" id="skill-list"></div>
+                        <h4 class="mini-head">Relevant Coursework</h4>
+                        <div class="course-chips" id="course-chips"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNEY / 3D TIMELINE -->
+        <section id="journey" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">03 · Journey</span>
+                    <h2>Education, work &amp; <span class="gradient-text">leadership</span></h2>
+                </div>
+                <div class="tl-filters reveal" role="tablist">
+                    <button class="chip active" data-filter="all">All</button>
+                    <button class="chip" data-filter="education"><i class="fa-solid fa-graduation-cap"></i> Education</button>
+                    <button class="chip" data-filter="experience"><i class="fa-solid fa-briefcase"></i> Experience</button>
+                    <button class="chip" data-filter="leadership"><i class="fa-solid fa-people-group"></i> Leadership</button>
+                </div>
+                <div class="timeline-stage">
+                    <div class="timeline" id="timeline"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section id="research" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">04 · Research</span>
+                    <h2>Thesis &amp; <span class="gradient-text">publications</span></h2>
+                </div>
+
+                <article class="thesis reveal">
+                    <div class="thesis-text">
+                        <span class="pill"><i class="fa-solid fa-circle pulse-dot"></i> Undergraduate Thesis · 2025 – Present</span>
+                        <h3>NeuroVision: EEG-to-Video Generation using Multimodal Deep Learning</h3>
+                        <p>Brain-signal-driven video generation and cross-modal representation learning: decoding what a person sees from their EEG, then generating it as video.</p>
+                        <div class="tag-row"><span>EEG</span><span>BCI</span><span>Generative Models</span><span>Cross-modal Learning</span></div>
+                    </div>
+                    <div class="thesis-visual" aria-hidden="true">
+                        <canvas id="eeg-canvas"></canvas>
+                        <div class="thesis-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        <div class="frames">
+                            <div class="frame"></div><div class="frame"></div><div class="frame"></div>
+                        </div>
+                    </div>
+                </article>
+
+                <p class="section-desc reveal center">Hover or tap a paper to flip it.</p>
+                <div class="pub-grid" id="pub-grid"></div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">05 · Projects</span>
+                    <h2>Things I've <span class="gradient-text">built</span></h2>
+                </div>
+
+                <div class="cube-showcase reveal">
+                    <div class="cube-stage">
+                        <div class="cube" id="project-cube"></div>
+                    </div>
+                    <div class="cube-info">
+                        <span class="eyebrow">Featured · <span id="cube-index">1</span>/4</span>
+                        <h3 id="cube-title"></h3>
+                        <p id="cube-desc"></p>
+                        <div class="cube-controls">
+                            <button class="round-btn" id="cube-prev" aria-label="Previous featured project"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button class="round-btn" id="cube-next" aria-label="Next featured project"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-filters reveal">
+                    <button class="chip active" data-cat="all">All</button>
+                    <button class="chip" data-cat="ai">AI &amp; Vision</button>
+                    <button class="chip" data-cat="robotics">Robotics</button>
+                    <button class="chip" data-cat="hardware">Hardware</button>
+                    <button class="chip" data-cat="power">Power Systems</button>
+                </div>
+                <div class="proj-grid" id="proj-grid"></div>
+            </div>
+        </section>
+
+        <!-- AWARDS -->
+        <section id="awards" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">06 · Honors</span>
+                    <h2>Awards in <span class="gradient-text">orbit</span></h2>
+                    <p class="section-desc">Drag or use the arrows to spin the ring.</p>
+                </div>
+                <div class="carousel-stage reveal">
+                    <div class="carousel" id="award-carousel"></div>
+                    <div class="carousel-floor"></div>
+                </div>
+                <div class="cube-controls center">
+                    <button class="round-btn" id="award-prev" aria-label="Previous award"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="round-btn" id="award-next" aria-label="Next award"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section">
+            <div class="main-width">
+                <div class="section-head reveal">
+                    <span class="eyebrow">07 · Contact</span>
+                    <h2>Let's <span class="gradient-text">connect</span></h2>
+                </div>
+                <div class="contact-grid">
+                    <form id="contact-form" class="glass reveal">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+                        <p class="form-note">Opens your email app with the message ready to send.</p>
+                    </form>
+                    <div class="contact-info glass reveal">
+                        <h3>Let's build something!</h3>
+                        <p>Open to research collaborations, internships, and interesting engineering problems, or just a friendly chat.</p>
+                        <ul>
+                            <li><i class="fa-solid fa-envelope"></i><a href="mailto:sudiptosarkarjoy@gmail.com">sudiptosarkarjoy@gmail.com</a></li>
+                            <li><i class="fa-solid fa-phone"></i><a href="tel:+8801774024354">+880 1774 024354</a></li>
+                            <li><i class="fa-solid fa-location-dot"></i>Dept. of EEE, BUET, Dhaka, Bangladesh</li>
+                        </ul>
+                        <div class="hero-social">
+                            <a href="https://github.com/DarkJ0Y" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/sudipto-sarkar-256b15227/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/sarkar.joy.142" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year">2026</span> · Sudipto Sarkar Joy · All Rights Reserved</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="javascript/data.js"></script>
+    <script src="javascript/main.js"></script>
+</body>
+</html>
