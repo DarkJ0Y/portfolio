@@ -489,7 +489,7 @@
             <ul class="layer l3">${p.points.map((x) => `<li>${x}</li>`).join("")}</ul>
             <div class="proj-bottom layer l4">
                 <div class="proj-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
-                ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener" aria-label="GitHub repository"><i class="fa-brands fa-github"></i></a>` : ""}
+                ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener" aria-label="GitHub repository"><i class="fa-brands fa-github"></i> GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
             </div>
         </article>`).join("");
 
@@ -511,6 +511,19 @@
         card.addEventListener("pointerleave", () => (card.style.transform = ""));
     }
     $$(".proj-card").forEach((c) => attachTilt(c, 14));
+
+    // Whole card opens the project's GitHub repository
+    const openRepo = (url) => window.open(url, "_blank", "noopener");
+    D.projects.forEach((p, i) => {
+        if (!p.link) return;
+        const card = $("#project-" + i);
+        card.classList.add("linked");
+        card.tabIndex = 0;
+        card.setAttribute("role", "link");
+        card.setAttribute("aria-label", `${p.title}: open GitHub repository`);
+        card.addEventListener("click", (e) => { if (!e.target.closest("a")) openRepo(p.link); });
+        card.addEventListener("keydown", (e) => { if (e.key === "Enter") openRepo(p.link); });
+    });
     $$("[data-tilt]").forEach((c) => attachTilt(c, 16));
 
     /* ---------------- Featured project cube ---------------- */
@@ -518,6 +531,7 @@
         const featured = [0, 2, 3, 1];
         const cube = $("#project-cube");
         const half = 125;
+        let cubeDragged = false; // a swipe on the cube should rotate it, not open a repo
         featured.forEach((pi, i) => {
             const p = D.projects[pi];
             const f = el("div", "cube-face", `
@@ -525,6 +539,8 @@
                 <div><div class="m">${p.metric.value}</div><h4>${p.title}</h4></div>`);
             f.style.transform = `rotateY(${i * 90}deg) translateZ(${half}px)`;
             f.addEventListener("click", () => {
+                if (cubeDragged) return;
+                if (p.link) return openRepo(p.link);
                 const card = $("#project-" + pi);
                 card.scrollIntoView({ behavior: "smooth", block: "center" });
                 card.animate([{ boxShadow: "0 0 0 0 rgba(141,114,225,0)" }, { boxShadow: "0 0 0 6px rgba(141,114,225,.8)" }, { boxShadow: "0 0 0 0 rgba(141,114,225,0)" }], { duration: 1400, delay: 500 });
@@ -555,9 +571,9 @@
         stage.addEventListener("pointerenter", () => clearInterval(timer));
         stage.addEventListener("pointerleave", restart);
         let sx = null;
-        stage.addEventListener("pointerdown", (e) => (sx = e.clientX));
+        stage.addEventListener("pointerdown", (e) => { sx = e.clientX; cubeDragged = false; });
         stage.addEventListener("pointerup", (e) => {
-            if (sx !== null && Math.abs(e.clientX - sx) > 40) { show(e.clientX < sx ? 1 : -1); restart(); }
+            if (sx !== null && Math.abs(e.clientX - sx) > 40) { cubeDragged = true; show(e.clientX < sx ? 1 : -1); restart(); }
             sx = null;
         });
         show(0);
