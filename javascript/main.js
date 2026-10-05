@@ -460,14 +460,14 @@
                     <div class="pub-icon"><i class="fa-solid ${p.icon}"></i></div>
                     <span class="status ${p.status.split(" ")[0]}">${p.status} · ${p.kind}</span>
                     <h4>${p.title}</h4>
-                    <span class="year">${p.year} · tap to flip</span>
+                    <span class="year">${p.year} · ${p.links ? p.links.map((l) => l.label).join(" · ") : "tap to flip"}</span>
                 </div>
                 <div class="flip-face flip-back">
                     <h5>Authors</h5>
                     <p>${p.authors.replace(/S\. Sarkar/, "<b>S. Sarkar</b>")}</p>
                     <h5>Venue</h5>
                     <p>${p.venue}</p>
-                    ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener">Read paper <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
+                    ${p.links ? `<div class="pub-links">${p.links.map((l) => `<a href="${l.url}" target="_blank" rel="noopener">${l.label} <i class="fa-solid fa-arrow-up-right-from-square"></i></a>`).join("")}</div>` : `<p class="pub-pending">Link will be added once published.</p>`}
                 </div>
             </div>
         </div>`).join("");
@@ -475,6 +475,14 @@
         f.addEventListener("click", (e) => { if (!e.target.closest("a")) f.classList.toggle("flipped"); });
         f.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); f.classList.toggle("flipped"); } });
     });
+
+    /* Research profile buttons: shown only when a URL is set in data.js */
+    $$("[data-profile]").forEach((a) => {
+        const url = (D.profiles || {})[a.dataset.profile];
+        if (url) a.href = url;
+        else a.remove();
+    });
+    if (!$(".profile-row a")) $(".profile-row").remove();
 
     /* ---------------- Projects: grid with tilt + exploded layers ---------------- */
     const grid = $("#proj-grid");

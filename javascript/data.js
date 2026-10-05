@@ -2,6 +2,11 @@
 // Edit this file to update the site; main.js renders everything from here.
 
 const PORTFOLIO = {
+  // Research profiles. Leave a value empty ("") to hide its button.
+  profiles: {
+    scholar: "" // Google Scholar profile URL, e.g. https://scholar.google.com/citations?user=XXXXXXXX
+  },
+
   projects: [
     {
       title: "Autonomous Rescue Drone for Locating Survivors",
@@ -123,7 +128,11 @@ const PORTFOLIO = {
       authors: "F. Labiba, M. A. Hasan, S. Sarkar, A. Shahriar, N. Tasnim, S. A. Fattah",
       venue: "2025 IEEE International Women in Engineering (WIE) Conference on Electrical and Computer Engineering (WIECON-ECE), Cox's Bazar, Bangladesh",
       year: "2025",
-      icon: "fa-satellite-dish"
+      icon: "fa-satellite-dish",
+      links: [
+        { label: "IEEE Xplore", url: "https://ieeexplore.ieee.org/document/11526317" },
+        { label: "DOI", url: "https://doi.org/10.1109/WIECON-ECE69386.2025.11526317" }
+      ]
     },
     {
       status: "Preprint",
@@ -133,7 +142,11 @@ const PORTFOLIO = {
       venue: "arXiv preprint arXiv:2510.10765",
       year: "2025",
       icon: "fa-eye",
-      link: "https://arxiv.org/abs/2510.10765"
+      links: [
+        { label: "arXiv", url: "https://arxiv.org/abs/2510.10765" },
+        { label: "PDF", url: "https://arxiv.org/pdf/2510.10765" },
+        { label: "DOI", url: "https://doi.org/10.48550/arXiv.2510.10765" }
+      ]
     },
     {
       status: "Under Review",

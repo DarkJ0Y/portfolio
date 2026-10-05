@@ -399,7 +399,12 @@ button { font: inherit; color: inherit; cursor: pointer; background: none; borde
 .flip-front .year { margin-top: auto; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
 .flip-back h5 { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #e4dcff; opacity: .8; }
 .flip-back p { font-size: 14px; margin: 4px 0 16px; color: #f2eeff; }
-.flip-back a { margin-top: auto; align-self: flex-start; background: #fff; color: #3a2470; padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 13.5px; }
+.pub-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; }
+.pub-links a { background: #fff; color: #3a2470; padding: 7px 15px; border-radius: 20px; font-weight: 600; font-size: 13px; transition: transform .2s, box-shadow .2s; }
+.pub-links a i { font-size: 10px; margin-left: 3px; }
+.pub-links a:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -6px rgba(0,0,0,.5); }
+.pub-pending { margin-top: auto !important; font-size: 12.5px !important; opacity: .75; font-style: italic; }
+.profile-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
 
 /* ---------- Projects ---------- */
 .cube-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 70px; }
