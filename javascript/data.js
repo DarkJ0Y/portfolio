@@ -4,7 +4,7 @@
 const PORTFOLIO = {
   // Research profiles. Leave a value empty ("") to hide its button.
   profiles: {
-    scholar: "" // Google Scholar profile URL, e.g. https://scholar.google.com/citations?user=XXXXXXXX
+    scholar: "https://scholar.google.com/citations?user=G4IOxVQAAAAJ&hl=en"
   },
 
   projects: [
