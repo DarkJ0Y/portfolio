@@ -77,7 +77,17 @@
                     <p class="hero-quote"><i class="fa-solid fa-quote-left"></i> Life is what how we define it, so define yourself to define your life</p>
                     <div class="hero-cta">
                         <a href="#projects" class="btn-primary">My Projects</a>
-                        <a href="assets/Sudipto_Sarkar_CV.pdf" class="btn-ghost" download><i class="fa-solid fa-download"></i> Download CV</a>
+                        <div class="cv-wrap">
+                            <a href="assets/Sudipto_Sarkar_CV.pdf" class="btn-ghost" id="cv-btn" download><i class="fa-solid fa-download"></i> Download CV</a>
+                            <!-- Hover preview: scrollable mini CV, click to open the full viewer -->
+                            <div class="cv-peek" id="cv-peek" role="button" tabindex="0" aria-label="Open full CV">
+                                <div class="cv-peek-head">
+                                    <span><i class="fa-solid fa-file-pdf"></i> Sudipto_Sarkar_CV.pdf</span>
+                                    <span class="cv-peek-hint"><i class="fa-solid fa-expand"></i> Click to expand</span>
+                                </div>
+                                <div class="cv-pages" id="cv-peek-pages"><div class="cv-loading">Loading CV…</div></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="hero-social">
                         <a data-profile="scholar" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><i class="fa-solid fa-graduation-cap"></i></a>
@@ -96,8 +106,8 @@
 
             <div class="main-width">
                 <div class="stats reveal">
-                    <div class="stat"><b data-count="3">0</b><span>Research papers</span></div>
-                    <div class="stat"><b data-count="8">0</b><span>Engineering projects</span></div>
+                    <div class="stat"><b data-count="4">0</b><span>Research papers</span></div>
+                    <div class="stat"><b data-count="9">0</b><span>Engineering projects</span></div>
                     <div class="stat"><b data-count="9">0</b><span>Honors &amp; awards</span></div>
                     <div class="stat"><b data-count="4">0</b><span>Leadership roles</span></div>
                 </div>
@@ -311,6 +321,21 @@
             </div>
         </section>
     </main>
+
+    <!-- Full CV viewer -->
+    <div class="cv-modal" id="cv-modal" role="dialog" aria-modal="true" aria-label="CV viewer" aria-hidden="true">
+        <div class="cv-modal-box">
+            <div class="cv-modal-bar">
+                <span class="cv-modal-title"><i class="fa-solid fa-file-pdf"></i> Sudipto Sarkar · CV</span>
+                <div class="cv-modal-actions">
+                    <a href="assets/Sudipto_Sarkar_CV.pdf" target="_blank" rel="noopener" class="chip"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open PDF</a>
+                    <a href="assets/Sudipto_Sarkar_CV.pdf" download class="chip active"><i class="fa-solid fa-download"></i> Download</a>
+                    <button class="round-btn cv-close" id="cv-close" aria-label="Close CV viewer"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+            <div class="cv-pages cv-modal-pages" id="cv-modal-pages"><div class="cv-loading">Loading CV…</div></div>
+        </div>
+    </div>
 
     <footer class="site-footer">
         <p>© <span id="year">2026</span> · Sudipto Sarkar Joy · All Rights Reserved</p>

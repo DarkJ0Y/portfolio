@@ -536,7 +536,7 @@
 
     /* ---------------- Featured project cube ---------------- */
     function initCube() {
-        const featured = [0, 2, 3, 1];
+        const featured = [1, 3, 4, 2]; // indexes into PORTFOLIO.projects
         const cube = $("#project-cube");
         const half = 125;
         let cubeDragged = false; // a swipe on the cube should rotate it, not open a repo
@@ -599,6 +599,7 @@
                 <span class="rank">${a.rank}</span>
                 <h4>${a.title}</h4>
                 ${a.note ? `<p>${a.note}</p>` : ""}
+                ${a.link ? `<a class="award-link" href="${a.link}" target="_blank" rel="noopener">Details <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ""}
                 <span class="yr">${a.year}</span>`);
             car.appendChild(c);
             return c;
@@ -614,7 +615,7 @@
 
         let rot = 0, target = null, dragging = false, lx = 0, vel = 0;
         const stage = $(".carousel-stage");
-        stage.addEventListener("pointerdown", (e) => { dragging = true; lx = e.clientX; target = null; stage.setPointerCapture(e.pointerId); });
+        stage.addEventListener("pointerdown", (e) => { if (e.target.closest("a")) return; dragging = true; lx = e.clientX; target = null; stage.setPointerCapture(e.pointerId); });
         stage.addEventListener("pointermove", (e) => {
             if (!dragging) return;
             vel = (e.clientX - lx) * 0.35;
@@ -647,6 +648,99 @@
         })();
     }
     initCarousel();
+
+    /* ---------------- CV: hover preview + full viewer (rendered with PDF.js) ---------------- */
+    function initCV() {
+        const CV_URL = "assets/Sudipto_Sarkar_CV.pdf";
+        const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+        const wrap = $(".cv-wrap"), btn = $("#cv-btn"), peek = $("#cv-peek"), modal = $("#cv-modal");
+        const peekPages = $("#cv-peek-pages"), modalPages = $("#cv-modal-pages");
+
+        // Load PDF.js and the document once, on first use
+        let pdfPromise = null;
+        function loadPdf() {
+            if (!pdfPromise) {
+                pdfPromise = new Promise((resolve, reject) => {
+                    if (window.pdfjsLib) return resolve();
+                    const sc = document.createElement("script");
+                    sc.src = PDFJS + "pdf.min.js";
+                    sc.onload = resolve;
+                    sc.onerror = reject;
+                    document.head.appendChild(sc);
+                }).then(() => {
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + "pdf.worker.min.js";
+                    return pdfjsLib.getDocument(CV_URL).promise;
+                });
+                pdfPromise.catch(() => (pdfPromise = null)); // allow a retry
+            }
+            return pdfPromise;
+        }
+
+        const done = new Set();
+        async function render(container, maxWidth) {
+            if (done.has(container)) return;
+            done.add(container);
+            try {
+                const pdf = await loadPdf();
+                const cs = getComputedStyle(container);
+                const cssWidth = Math.min(maxWidth, container.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight));
+                const dpr = Math.min(devicePixelRatio || 1, 2);
+                const canvases = [];
+                for (let n = 1; n <= pdf.numPages; n++) {
+                    const page = await pdf.getPage(n);
+                    const viewport = page.getViewport({ scale: (cssWidth * dpr) / page.getViewport({ scale: 1 }).width });
+                    const c = document.createElement("canvas");
+                    c.width = viewport.width;
+                    c.height = viewport.height;
+                    await page.render({ canvasContext: c.getContext("2d"), viewport }).promise;
+                    canvases.push(c);
+                }
+                container.replaceChildren(...canvases);
+            } catch (err) {
+                console.warn("CV preview failed:", err);
+                done.delete(container);
+                container.innerHTML = `<div class="cv-loading">Preview unavailable. <a href="${CV_URL}" target="_blank" rel="noopener">Open the PDF</a></div>`;
+            }
+        }
+
+        function openModal() {
+            wrap.classList.remove("peek");
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("no-scroll");
+            $("#cv-close").focus();
+            requestAnimationFrame(() => render(modalPages, 820));
+        }
+        function closeModal() {
+            modal.classList.remove("open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("no-scroll");
+        }
+        $("#cv-close").addEventListener("click", closeModal);
+        modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.classList.contains("open")) closeModal(); });
+
+        if (canHover) {
+            // Hover (or keyboard focus) on the button shows the scrollable mini preview
+            let showT, hideT;
+            const show = () => {
+                clearTimeout(hideT);
+                showT = setTimeout(() => { wrap.classList.add("peek"); render(peekPages, 300); }, 120);
+            };
+            const hide = () => { clearTimeout(showT); hideT = setTimeout(() => wrap.classList.remove("peek"), 220); };
+            wrap.addEventListener("pointerenter", show);
+            wrap.addEventListener("pointerleave", hide);
+            wrap.addEventListener("focusin", show);
+            wrap.addEventListener("focusout", hide);
+            btn.addEventListener("pointerenter", loadPdf, { once: true });
+            peek.addEventListener("click", openModal);
+            peek.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(); } });
+        } else {
+            // Touch screens have no hover: open the viewer, which has its own Download button
+            btn.addEventListener("click", (e) => { e.preventDefault(); openModal(); });
+        }
+    }
+    initCV();
 
     /* ---------------- Contact (mail() is disabled on the host, so use mailto) ---------------- */
     $("#contact-form").addEventListener("submit", (e) => {

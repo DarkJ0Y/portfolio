@@ -9,6 +9,19 @@ const PORTFOLIO = {
 
   projects: [
     {
+      title: "Precision Pesticide Spray and Crop Health Monitoring Drone",
+      date: "2026",
+      icon: "fa-seedling",
+      cats: ["robotics", "ai"],
+      tags: ["Precision Agriculture", "UAV", "Crop Health Monitoring", "Precision Spraying"],
+      metric: { value: "Agri", label: "precision UAV" },
+      points: [
+        "Developed a drone-based system for precision pesticide spraying and crop health monitoring.",
+        "Focused on targeted pesticide application and data-driven crop monitoring to support efficient, sustainable agriculture."
+      ]
+      // CV links github.com/DarkJ0Y/PaddyHawk, which is not public yet; add link: "..." once it is
+    },
+    {
       title: "Autonomous Rescue Drone for Locating Survivors",
       date: "Sep 2024 – Dec 2024",
       icon: "fa-helicopter",
@@ -33,7 +46,8 @@ const PORTFOLIO = {
         "Developed a deepfake detection model using OpenCLIP-ViT trained on a balanced dataset.",
         "Achieved 98% training and 97% validation accuracy using strict mini-batch training and augmentation.",
         "Evaluated the model on the IEEE SP Cup 2025 dataset (43k real, 219k fake images)."
-      ]
+      ],
+      link: "https://github.com/DarkJ0Y/PairCLIP-SWA"
     },
     {
       title: "Multi-Modal Political Meme Classification",
@@ -149,32 +163,50 @@ const PORTFOLIO = {
       ]
     },
     {
+      status: "Preprint",
+      kind: "arXiv",
+      title: "PairCLIP-SWA: Similarity-Guided Balancing and Stochastic Weight Averaging for Generalized Deepfake Image Detection with OpenCLIP",
+      authors: "Md. Nakib, S. Sarkar, A. J. A. Jubayer Talukder, M. A. Haque",
+      venue: "arXiv preprint arXiv:2610.37874",
+      year: "2026",
+      icon: "fa-masks-theater",
+      links: [
+        { label: "arXiv", url: "https://arxiv.org/abs/2610.37874" },
+        { label: "PDF", url: "https://arxiv.org/pdf/2610.37874" },
+        { label: "Code", url: "https://github.com/DarkJ0Y/PairCLIP-SWA" },
+        { label: "DOI", url: "https://doi.org/10.48550/arXiv.2610.37874" }
+      ]
+    },
+    {
       status: "Under Review",
       kind: "Journal Manuscript",
       title: "GLFNet: Gated Local-Focus Network for EEG-Based Visual Semantic Decoding",
       authors: "S. Sarkar, H. Imtiaz",
-      venue: "Manuscript under review",
+      venue: "Manuscript under review · preprint on SSRN",
       year: "2026",
-      icon: "fa-brain"
+      icon: "fa-brain",
+      links: [
+        { label: "SSRN", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7304009" }
+      ]
     }
   ],
 
   timeline: [
-    { type: "experience", period: "2025 – Present", title: "Founder & Senior Software Developer", org: "Langgol – Agritech", place: "Dhaka, Bangladesh", icon: "fa-seedling" },
+    { type: "experience", period: "2025 – Present", title: "Founder & Senior Software Developer", org: "Langgol – Agritech", place: "Dhaka, Bangladesh", icon: "fa-seedling", link: "https://darkj0y.github.io/Langgol-App/" },
     { type: "leadership", period: "2025 – Present", title: "President", org: "BUET Robotics Society", icon: "fa-robot" },
     { type: "leadership", period: "2025 – Present", title: "Vice Chairperson", org: "IEEE BUET Student Branch Chapter", icon: "fa-people-group" },
     { type: "leadership", period: "2025 – Present", title: "Senior Coordinator", org: "Team Interplanetary – Drone Sub-Team", icon: "fa-helicopter" },
     { type: "leadership", period: "2024 – 2025", title: "Treasurer", org: "BUET Robotics Society", icon: "fa-robot" },
     { type: "experience", period: "2023 – Present", title: "Math Instructor", org: "Udvash (Education Institute)", place: "Dhaka, Bangladesh", icon: "fa-chalkboard-user" },
     { type: "education", period: "2022 – 2026 (Expected)", title: "B.Sc. Engg., Electrical & Electronic Engineering", org: "Bangladesh University of Engineering and Technology (BUET)", place: "Dhaka, Bangladesh", note: "CGPA 3.21 (up to Level-4 Term 2)", icon: "fa-graduation-cap" },
-    { type: "experience", period: "2020 – 2024", title: "Founder & Senior Developer", org: "Somakolon – the learning app", place: "Dhaka, Bangladesh", icon: "fa-book-open-reader", link: "https://www.somakolon.apeiroworld.com/" },
+    { type: "experience", period: "2020 – Present", title: "Founder & Senior Developer", org: "Somakolon – the learning app", place: "Dhaka, Bangladesh", icon: "fa-book-open-reader", link: "https://somakolon.apeiroworld.com/home" },
     { type: "education", period: "2018 – 2020", title: "Higher Secondary Certificate (HSC), Science", org: "Notre Dame College", place: "Dhaka, Bangladesh", icon: "fa-graduation-cap" },
     { type: "education", period: "2012 – 2018", title: "Secondary School Certificate (SSC), Science", org: "Kushtia Zilla School", place: "Kushtia, Bangladesh", icon: "fa-graduation-cap" }
   ],
 
   awards: [
-    { rank: "2nd Runner Up", title: "IEEE VIP-CUP 2025", year: "2025", note: "Lightweight multimodal drone–bird detection and tracking system for the IEEE VIP-CUP international competition", icon: "fa-trophy" },
-    { rank: "1st Runner Up", title: "IAS Humanitarian Contest 2025", year: "2025", note: "Autonomous disaster-response drone for search and rescue and medical supply delivery", icon: "fa-trophy" },
+    { rank: "2nd Runner Up", title: "IEEE VIP-CUP 2025", year: "2025", note: "Lightweight multimodal drone–bird detection and tracking system for the IEEE VIP-CUP international competition", icon: "fa-trophy", link: "https://2025.ieeeicip.org/ieee-sps-video-and-image-processing-cup/" },
+    { rank: "1st Runner Up", title: "IEEE IAS Humanitarian Contest 2025", year: "2025", note: "Autonomous disaster-response drone for search and rescue and medical supply delivery", icon: "fa-trophy", link: "https://ieeexplore.ieee.org/abstract/document/11131677" },
     { rank: "Champion", title: "University Innovation Hub Programme 2025", year: "2025", note: "IC4, BUET", icon: "fa-crown" },
     { rank: "1st Runner Up", title: "IEEE-WIE Robotics for Climate Change", year: "2024", note: "WIE BD Summit", icon: "fa-medal" },
     { rank: "1st Runner Up", title: "Project Showcasing", year: "2024", note: "EEE DAY 2023", icon: "fa-medal" },
@@ -199,7 +231,7 @@ const PORTFOLIO = {
     { label: "Computer Vision", icon: "fa-eye" },
     { label: "Quantum Computing & QML", icon: "fa-atom" },
     { label: "Deep Learning", icon: "fa-diagram-project" },
-    { label: "Foundation Models & LLMs", icon: "fa-cubes" },
+    { label: "Foundation Models, LLMs & Federated Learning", icon: "fa-cubes" },
     { label: "Biomedical AI", icon: "fa-heart-pulse" }
   ]
 };
