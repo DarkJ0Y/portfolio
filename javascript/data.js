@@ -166,7 +166,7 @@ const PORTFOLIO = {
       status: "Preprint",
       kind: "arXiv",
       title: "PairCLIP-SWA: Similarity-Guided Balancing and Stochastic Weight Averaging for Generalized Deepfake Image Detection with OpenCLIP",
-      authors: "Md. Nakib, S. Sarkar, A. J. A. Jubayer Talukder, M. A. Haque",
+      authors: "Md. Nakib, S. Sarkar, A. J. A. J. Talukder, M. A. Haque",
       venue: "arXiv preprint arXiv:2610.37874",
       year: "2026",
       icon: "fa-masks-theater",
